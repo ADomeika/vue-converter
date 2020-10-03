@@ -1,18 +1,39 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="wrapper">
+    <Converter
+      buttonTitle="Save to Favourites"
+      @onButtonClick="onSaveToFavouritesClick"
+      initialAmount="0"
+      initialBaseCurrency="GBP"
+      initialTargetCurrency="USD"
+    />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Converter from "@/components/layouts/Converter.vue";
 
 export default {
-  name: "Home",
   components: {
-    HelloWorld
+    Converter
+  },
+  methods: {
+    onSaveToFavouritesClick({ baseAmount, baseCurrency, targetCurrency }) {
+      this.$store.dispatch("saveToFavourites", {
+        id: Math.random(),
+        baseAmount,
+        baseCurrency,
+        targetCurrency
+      });
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.wrapper {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+}
+</style>

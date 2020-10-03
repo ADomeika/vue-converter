@@ -1,0 +1,6 @@
+Got the currency list from google search results on 'currency list json' and removed the non-working parts manually.
+Probably better way of getting the working list would be to set up a scheduler or something similar that checks if the api endpoint still has the currencies.
+
+Instead of XML, I have used JSON.
+
+For testing, I have used Jest and vue-test-utils.
